@@ -60,6 +60,8 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
 @[7](ここでConsumerが期待する内容が書かれたファイルを指定している)
 @[8-18](ここでConsumerが期待する内容が書かれたファイルを指定している)
 
+---
+
 ### Providerテストコード
 ```
 func TestProvider(t *testing.T) {
@@ -85,5 +87,5 @@ func TestProvider(t *testing.T) {
 @[11-17](pact deamonを介するしてテスト)
 @[14](ここでConsumerが期待する内容が書かれたファイルを指定している)
 
-
+---
 ### PactBroker
