@@ -25,10 +25,6 @@ val pact = ConsumerPactBuilder.consumer("AndroidApp")
                 "  \"lines\": [\n" +
                 "    {\n" +
                 "      \"id\": 1,\n" +
-                "      \"name\": \"銀座\",\n" +
-                "      \"name_kana\": \"ぎんざ\",\n" +
-                "      \"mark\": \"G\",\n" +
-                "      \"color_code\": \"f39700\",\n" +
                 "    }\n" +
                 "  ]\n" +
                 "}"
@@ -37,18 +33,7 @@ val pact = ConsumerPactBuilder.consumer("AndroidApp")
 val config = MockProviderConfig.createDefault()
 val result = runConsumerTest(pact, config, object : PactTestRun {
     override fun run(mockServer: MockServer) {
-        val expectedResponse = HashMap<String, Any>()
-        val lines = ArrayList<HashMap<String,Any>>()
-        val line = HashMap<String, Any>()
-        line.put("id", 1)
-        line.put("name", "銀座")
-        line.put("name_kana", "ぎんざ")
-        line.put("mark", "G")
-        line.put("color_code", "f39700")
-        lines.add(line)
-        expectedResponse.put("lines", lines)
-        Assert.assertEquals(expectedResponse,
-                ConsumerClient(mockServer.getUrl()).getAsMap("/lines"))
+
     }
 })
 Assert.assertEquals(PactVerificationResult.Ok, result);
@@ -85,9 +70,10 @@ func TestProvider(t *testing.T) {
     ProviderStatesSetupURL: "http://localhost:8000/setup",
   })
 ```
-@[9](サーバーを起動して)
+@[](サーバーを起動して)
 @[11-17](pact deamonを介するしてテスト)
 @[14](ここでConsumerが期待する内容が書かれたファイルを指定している)
 
 ---
+
 ### PactBroker
