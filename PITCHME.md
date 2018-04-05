@@ -4,6 +4,12 @@
 
 ---
 
+### PACTはなにか
+- Consumer Driven Contruct Testのimplements
+- 消費者と提供者間の破壊的変更を検知する
+- いいかんじにする
+
+
 ### 手順
 
 1. deamon用のバイナリを用意する
