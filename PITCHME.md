@@ -1,40 +1,40 @@
-# 設計や〜
+# Domain領域を守るための一つの手段
 
 [@katsutomu](https://github.com/katsutomu)
 
 ---
 
-# アジェンダ
+### アジェンダ
 - なぜ我々は設計をするのか
 - 設計をする時にどのようなことを心がけるべきか
 - 達成するための手段
 
 ---
 
-# なぜ我々は設計をするのか
+### なぜ我々は設計をするのか
 - ユーザーやクライアントの利益を最大化し不利益を最小化するため
 - 開発チームの力を最大化するため
 - 長期的に開発/運用を継続するため
 
 ---
 
-## 現在から未来を通してプロダクトに関わる全てのステークホルダーのため
+### 現在から未来を通してプロダクトに関わる全てのステークホルダーのため
 
 ---
 
-# 設計をする時にどのようなことを心がけるべきか
+### 設計をする時にどのようなことを心がけるべきか
 
 - ドメインを守る
 
 ---
 
-# 何故ならば
+### 何故ならば
 
 - ステークホルダーの関心事の多くはドメインに詰まっている
 
 ---
 
-# 故に
+### 故に
 
 - ドメインを他の関心事から隔離し守ることが大事
 
@@ -77,7 +77,6 @@
 
 ---
 
-## コード
 
 ```
 class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
@@ -89,7 +88,6 @@ class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
 
 ---
 
-## コード
 
 ```
 interface HogeRepositoryInterface {
@@ -105,7 +103,7 @@ class HogeRepositoryImpl constructor(private val apiClient: ApiClient) : HogeRep
 ---
 
 
-## まとめ
+### まとめ
 
 - なぜ我々は設計をするのか
   - 現在から未来を通してプロダクトに関わる全てのステークホルダーのため
@@ -116,7 +114,7 @@ class HogeRepositoryImpl constructor(private val apiClient: ApiClient) : HogeRep
 
 ---
 
-## しめ
+### しめ
 
 
 ---
