@@ -144,7 +144,6 @@ class Hoge constructor(private repository:HogeRepositoryInterface) {
 +++
 <!-- .slide: data-transition="none" -->
 ![CCC](assets/after.png)
-+++
 
 ---
 
