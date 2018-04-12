@@ -140,10 +140,10 @@ class Hoge constructor(private repository:HogeRepositoryInterface) {
 
 +++
 <!-- .slide: data-transition="none" -->
-![0](image=assets/befor.png)
+![DDD](image=assets/befor.png)
 +++
 <!-- .slide: data-transition="none" -->
-![1](image=assets/after.png)
+![CCC](image=assets/after.png)
 +++
 
 ---
