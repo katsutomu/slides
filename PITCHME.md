@@ -101,6 +101,10 @@ class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
 
 ---
 
+
+
+---
+
 ```
 interface HogeRepositoryInterface {
   fun listById(id: Int): Observable<List<Coupon>>
