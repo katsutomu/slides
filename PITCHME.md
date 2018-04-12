@@ -136,10 +136,13 @@ class Hoge constructor(private repository:HogeRepositoryInterface) {
 
 ---
 
-+++?image=assets/befor.png
-<!-- .slide: data-background-transition="none" -->
-+++?image=assets/after.png
+### これが
 
+![DDD](assets/befor.png)
+
+### こうなる
+
+![DDD](assets/after.png)
 
 ---
 
