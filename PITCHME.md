@@ -103,7 +103,7 @@ class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
 
 ### 図にすると
 
----?image=assets/befor.png
+![DDD](assets/befor.png)
 
 ---
 
