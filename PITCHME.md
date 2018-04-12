@@ -50,7 +50,7 @@
 ---
 
 ## DDDのオレンジ本
-![IDDD](http://dackdive.hateblo.jp/entry/2017/09/04/100000)
+![IDDD](https://cdn-ak.f.st-hatena.com/images/fotolife/d/dackdive/20170904/20170904055134.png)
 
 ---
 
