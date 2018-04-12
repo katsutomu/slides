@@ -101,10 +101,9 @@ class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
 
 ---
 
-+++?image=assets/befor.png
-<!-- .slide: data-background-transition="none" -->
-+++?image=assets/after.png
+### 図にすると
 
+---?image=assets/befor.png
 
 ---
 
