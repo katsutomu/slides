@@ -77,8 +77,32 @@
 
 ---
 
-## 達成するための一つの手段
+## コード
 
+```
+class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
+    fun listById(id: Int): Observable<List<Coupon>> {
+        return apiClient.list(id)
+    }
+}
+```
+
+---
+
+## コード
+
+```
+interface HogeRepositoryInterface {
+  fun listById(id: Int): Observable<List<Coupon>>
+}
+
+class HogeRepositoryImpl constructor(private val apiClient: ApiClient) : HogeRepositoryInterface {
+    fun listById(id: Int): Observable<List<Coupon>> {
+        return apiClient.list(id)
+    }
+}
+```
+---
 
 
 ## まとめ
