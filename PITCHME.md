@@ -45,16 +45,18 @@
 ---
 
 ## DDDの青ぼん
-![Logo](https://i0.wp.com/www.ajlopez.com/images/articles/dddlayered.png)
+![DDD](https://i0.wp.com/www.ajlopez.com/images/articles/dddlayered.png)
 
 ---
 
 ## DDDのオレンジ本
+![IDDD](http://dackdive.hateblo.jp/entry/2017/09/04/100000)
 
 ---
 
 ## クリーンアーキテクチャ
-
+![Clean](https://camo.qiitausercontent.com/aa4e4f88dd885f486d7ab736311f886a7538a1df/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f36303435372f38666534633336362d343636652d653434632d613761362d6633613734336636393138332e706e67
+)
 ---
 
 ## 旧来のアーキテクチャでの課題
