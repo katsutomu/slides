@@ -22,7 +22,7 @@
 
 ---
 
-### 設計をする時にどのようなことを心がけるべきか
+### 何を心がけるべきか
 
 - ドメインを守る
 
@@ -40,7 +40,7 @@
 
 ---
 
-# 例えば
+### 例えば
 
 ---
 
@@ -77,6 +77,19 @@
 
 ---
 
+```
+class Hoge {
+    val repository:HogeRepository
+    init {
+        repository = HogeRepository(ApiClient())
+    }
+    fun list() {
+        repository.list()
+    }
+}
+```
+
+---
 
 ```
 class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
