@@ -120,8 +120,7 @@ class HogeRepositoryImpl constructor(private val apiClient: ApiClient) : HogeRep
 ---
 
 ```
-class Hoge {
-    val repository:HogeRepositoryInterface
+class Hoge constructor(private repository:HogeRepositoryInterface) {
     fun list() {
         repository.list()
     }
