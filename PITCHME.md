@@ -45,6 +45,7 @@
 ---
 
 ## DDDの青ぼん
+![Logo](https://i0.wp.com/www.ajlopez.com/images/articles/dddlayered.png)
 
 ---
 
