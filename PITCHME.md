@@ -164,6 +164,7 @@ fun main() {
 ### どうなったか
 
 +++
+<!-- .slide: data-transition="none" -->
 ![DDD](assets/befor.png)
 +++
 <!-- .slide: data-transition="none" -->
