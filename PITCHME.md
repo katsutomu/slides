@@ -90,7 +90,7 @@ class Hoge {
 }
 ```
 
-@[2-4](インフラに依存している)
+@[2-5](インフラ層に依存している)
 
 ---
 
@@ -112,6 +112,11 @@ class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
 
 ---
 
+
+### この関係を逆転するのが依存性逆転の原則
+
+---
+
 ### Repositoryをinterfaceに
 
 ```
@@ -120,7 +125,7 @@ interface HogeRepositoryInterface {
 }
 ```
 
-@[1-3](InterfaceはDomain層とする)
+- InterfaceはDomain層に置く
 
 ---
 
@@ -133,7 +138,7 @@ class HogeRepositoryImpl constructor(private val apiClient: ApiClient) : HogeRep
     }
 }
 ```
-@[1-4](Domain層のInterfaceを実装したInfra層)
+- Domain層のInterfaceを実装したInfra層
 
 ---
 
@@ -145,7 +150,13 @@ class Hoge constructor(private repository:HogeRepositoryInterface) {
         repository.list()
     }
 }
+
+fun main() {
+    Hoge(HogeRepositoryImpl(ApiClient()))
+}
 ```
+@[1](Domain層のInterfaceに依存するようになった)
+@[7-9](利用するときに依存を注入する)
 
 
 ---
@@ -173,10 +184,9 @@ class Hoge constructor(private repository:HogeRepositoryInterface) {
 
 ---
 
-### しめ
+# ご静聴ありがとうございました
 
 
----
 
 
 
