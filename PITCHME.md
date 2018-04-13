@@ -60,7 +60,7 @@
 ---
 
 
-## DDDの青ぼん
+## DDDの青ぼん・再
 ![DDD](https://i0.wp.com/www.ajlopez.com/images/articles/dddlayered.png)
 
 ---
@@ -77,6 +77,7 @@
 
 ---
 
+### Entity実装
 ```
 class Hoge {
     val repository:HogeRepository
@@ -89,7 +90,11 @@ class Hoge {
 }
 ```
 
+@[2-4](インフラに依存している)
+
 ---
+
+### Repository実装
 
 ```
 class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
@@ -107,13 +112,19 @@ class HogeRepository @Inject constructor(private val apiClient: ApiClient)  {
 
 ---
 
+### Repositoryをinterfaceに
+
 ```
 interface HogeRepositoryInterface {
   fun listById(id: Int): Observable<List<Coupon>>
 }
 ```
 
+@[1-3](InterfaceはDomain層とする)
+
 ---
+
+### Repositoryの実装
 
 ```
 class HogeRepositoryImpl constructor(private val apiClient: ApiClient) : HogeRepositoryInterface {
@@ -122,8 +133,11 @@ class HogeRepositoryImpl constructor(private val apiClient: ApiClient) : HogeRep
     }
 }
 ```
+@[1-4](Domain層のInterfaceを実装したInfra層)
 
 ---
+
+### Entityはこうなる
 
 ```
 class Hoge constructor(private repository:HogeRepositoryInterface) {
