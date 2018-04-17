@@ -145,7 +145,7 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
 
 ```
 @[1-5](Pact　deamonに接続)
-@[7](APIを起動)
+@[7](テスト対象のAPIを起動)
 @[9-17](テストを実行)
 @[12](/setUpにリクエストがきてデータを入れ替える)
 
@@ -159,9 +159,6 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
         decoder := json.NewDecoder(r.Body)
         decoder.Decode(&s)
 
-        user := "neko"
-        pass := "hogehoge"
-        dbName := "tokyo_toilet_test"
         db, err := sql.Open("mysql", user+":"+pass+"@tcp(192.168.33.200:3306)/"+dbName)
         if err != nil {
                 log.Fatal(err)
@@ -176,9 +173,9 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
         w.Header().Add("Content-Type", "application/json")
 })
 ```
-
----
-![fail_text](assets/fail_text.png)
+@[4-5](リクエストボディにComsumer名や状態が入っている)
+@[7](テスト対象のAPIを起動)
+@[11-17](Consumerごとにfixtureを入れ替えられる)
 
 ---
 
@@ -198,7 +195,10 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
   color_code: e60012
   sort_number: 0
 ```
+---
 
+### 失敗すると
+![fail_text](assets/fail_text.png)
 
 ---
 
@@ -217,9 +217,9 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
 
 ---
 ### 所感
-- hobe
-- huga
-- muga
+- 各サービス間を緩く繋いで破壊的変更を検知できて安心
+- GraphQL,Swagger,gRPC　with Protocolとかあるのでそちらで乗り切ってもう良さそう
+- PactBrockerのメリットは高いかも
 
 ---
 ### ご静聴ありがとうございました
