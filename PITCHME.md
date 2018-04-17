@@ -4,19 +4,17 @@
 
 ---
 
-### PACTはなにか
+### Pact is なにか
 - Consumer Driven Contruct Testのimplements
-- 消費者と提供者間の破壊的変更を検知する
-- いいかんじにする
+- Pactファイルを介して消費者と提供者間の破壊的変更を検知する
 
 ---
 
 
-### 手順
+### 手順-Provider
 
-1. deamon用のバイナリを用意する
-2. pact用のテスト書く
-3. テスト実行
+1. ConsumerからPactファイルをもらう
+2. Pactファイルの内容を満たしてテストする
 
 ---
 
@@ -31,7 +29,6 @@
 ```
 val pact = ConsumerPactBuilder.consumer("AndroidApp")
         .hasPactWith("ToiletAPI")
-        .uponReceiving("FirstTest")
         .path("/lines")
         .method("GET")
         .willRespondWith()
@@ -61,19 +58,16 @@ val pact = ConsumerPactBuilder.consumer("AndroidApp")
 val config = MockProviderConfig.createDefault()
 val result = runConsumerTest(pact, config, object : PactTestRun {
     override fun run(mockServer: MockServer) {
-
-    }
+	// ここにassertThatとか
+    }
 })
 Assert.assertEquals(PactVerificationResult.Ok, result);
 ```
-@[1](サーバーを起動して)
-@[2](pact deamonを介するしてテスト)
-@[3](ここでConsumerが期待する内容が書かれたファイルを指定している)
-@[4](ここでConsumerが期待する内容が書かれたファイルを指定している)
-@[5](ここでConsumerが期待する内容が書かれたファイルを指定している)
-@[6](ここでConsumerが期待する内容が書かれたファイルを指定している)
-@[7](ここでConsumerが期待する内容が書かれたファイルを指定している)
-@[8-18](ここでConsumerが期待する内容が書かれたファイルを指定している)
+@[1](自分の名前を指定)
+@[2](対象のProviderを指定)
+@[3-4](エンドポイントとHttpメソッドを指定)
+@[5-27](期待するレスポンスを指定)
+@[２９−３５](テストを実行)
 
 ---
 
