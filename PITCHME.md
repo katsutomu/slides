@@ -202,6 +202,13 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
 
 ---
 
+
+### ここまでまとめ
+- PactファイルをConsumerが作る
+- ProviderがPactファイルを元にテストする
+- 仲介役はPactBrocker
+
+
 ### PactBroker
 1. pactファイルの仲介役
 2. テストの結果履歴を管理
