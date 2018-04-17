@@ -67,7 +67,7 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
 @[2](対象のProviderを指定)
 @[3-4](エンドポイントとHttpメソッドを指定)
 @[5-27](期待するレスポンスを指定)
-@[２９−３５](テストを実行)
+@[２9-35](テストを実行)
 
 ---
 
