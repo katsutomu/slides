@@ -36,11 +36,24 @@ val pact = ConsumerPactBuilder.consumer("AndroidApp")
         .method("GET")
         .willRespondWith()
         .status(200)
-        .body(        "{\n" +
+        .body("{\n" +
                 "  \"lines\": [\n" +
                 "    {\n" +
                 "      \"id\": 1,\n" +
-                "    }\n" +
+                "      \"name\": \"ginza\",\n" +
+                "      \"name_kana\": \"ginza\",\n" +
+                "      \"mark\": \"G\",\n" +
+                "      \"color_code\": \"f39700\",\n" +
+                "      \"sort_number\": 0\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 2,\n" +
+                "      \"name\": \"marunouchi\",\n" +
+                "      \"name_kana\": \"marunouchi\",\n" +
+                "      \"mark\": \"M\",\n" +
+                "      \"color_code\": \"e60012\",\n" +
+                "      \"sort_number\": 0\n" +
+                "    }" +
                 "  ]\n" +
                 "}"
         )
@@ -134,24 +147,27 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
 
 ### Providerテストコード
 ```
-func TestProvider(t *testing.T) {
+	// Create Pact connecting to local Daemon
+	pact := &dsl.Pact{
+		Port:     6666, // Ensure this port matches the daemon port!
+		Consumer: "AndroidApp",
+		Provider: "ToiletAPI",
+	}
 
-  // Create Pact connecting to local Daemon
-  pact := &dsl.Pact{
-    Port:     6666, // Ensure this port matches the daemon port!
-    Consumer: "MyConsumer",
-    Provider: "MyProvider",
-  }
+	// Start provider API in the background
+	go startServer()
 
-  // Start provider API in the background
-  go startServer()
+	// Verify the Provider with local Pact Files
+	pact.VerifyProvider(t, types.VerifyRequest{
+		ProviderBaseURL:        "http://localhost:8080",
+		BrokerURL:              "http://localhost",
+		ProviderStatesSetupURL: "http://localhost:8080/setup",
+		BrokerUsername:         "",
+		BrokerPassword:         "",
+		PublishVerificationResults: true,
+		ProviderVersion:            "1.0.0",
+	})
 
-  // Verify the Provider with local Pact Files
-  pact.VerifyProvider(t, types.VerifyRequest{
-    ProviderBaseURL:        "http://localhost:8000",
-    PactURLs:               []string{filepath.ToSlash(fmt.Sprintf("%s/myconsumer-myprovider.json", pactDir))},
-    ProviderStatesSetupURL: "http://localhost:8000/setup",
-  })
 ```
 @[](サーバーを起動して)
 @[11-17](pact deamonを介するしてテスト)
@@ -159,4 +175,58 @@ func TestProvider(t *testing.T) {
 
 ---
 
+### データsetUp
+```
+rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
+        var s *types.ProviderState
+
+        decoder := json.NewDecoder(r.Body)
+        decoder.Decode(&s)
+
+        user := "neko"
+        pass := "hogehoge"
+        dbName := "tokyo_toilet_test"
+        db, err := sql.Open("mysql", user+":"+pass+"@tcp(192.168.33.200:3306)/"+dbName)
+        if err != nil {
+                log.Fatal(err)
+        }
+        fixtures, err := testfixtures.NewFolder(db, &testfixtures.MySQL{}, "fixtures")
+        if err != nil {
+                log.Fatal(err)
+        }
+        if err := fixtures.Load(); err != nil {
+                log.Fatal(err)
+        }
+        w.Header().Add("Content-Type", "application/json")
+})
+```
+
+---
+
+### fixture
+```
+- id: 1
+  name: ginza
+  name_kana: ginza
+  mark: G
+  color_code: f39700
+  sort_number: 0
+
+- id: 2
+  name: marunouchi
+  name_kana: marunouchi
+  mark: M
+  color_code: e60012
+  sort_number: 0
+```
+
+
+---
+
 ### PactBroker
+1. pactファイルの仲介役
+2. テストの結果履歴を管理
+3. その他にもお得機能あり
+
+
+
