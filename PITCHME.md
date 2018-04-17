@@ -64,6 +64,74 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
 
 ---
 
+```
+{
+    "provider": {
+        "name": "ToiletAPI"
+    },
+    "consumer": {
+        "name": "AndroidApp"
+    },
+    "interactions": [
+        {
+            "description": "test lines",
+            "request": {
+                "method": "GET",
+                "path": "/lines"
+            },
+            "response": {
+                "status": 200,
+                "body": {
+                    "lines": [
+                        {
+                            "id": 1,
+                            "name": "ginza",
+                            "name_kana": "ginza",
+                            "mark": "G",
+                            "color_code": "f39700",
+                            "sort_number": 0
+                        },
+                        {
+                            "id": 2,
+                            "name": "marunouchi",
+                            "name_kana": "marunouchi",
+                            "mark": "M",
+                            "color_code": "e60012",
+                            "sort_number": 0
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "description": "test stopStations",
+            "request": {
+                "method": "GET",
+                "path": "/lines/1/stop_stations"
+            },
+            "response": {
+                "status": 200,
+                "body": {
+                    "stop_stations": [
+                        
+                    ]
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "2.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.0"
+        }
+    }
+}
+```
+
+---
+
 ### Providerテストコード
 ```
 func TestProvider(t *testing.T) {
