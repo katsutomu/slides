@@ -27,27 +27,26 @@ val pact = ConsumerPactBuilder.consumer("AndroidApp")
 	.method("GET")
 	.willRespondWith()
 	.status(200)
-	.body("{\n" +
-		"  \"lines\": [\n" +
-		"    {\n" +
-		"      \"id\": 1,\n" +
-		"      \"name\": \"ginza\",\n" +
-		"      \"name_kana\": \"ginza\",\n" +
-		"      \"mark\": \"G\",\n" +
-		"      \"color_code\": \"f39700\",\n" +
-		"      \"sort_number\": 0\n" +
-		"    },\n" +
-		"    {\n" +
-		"      \"id\": 2,\n" +
-		"      \"name\": \"marunouchi\",\n" +
-		"      \"name_kana\": \"marunouchi\",\n" +
-		"      \"mark\": \"M\",\n" +
-		"      \"color_code\": \"e60012\",\n" +
-		"      \"sort_number\": 0\n" +
-		"    }" +
-		"  ]\n" +
-		"}"
-		)
+	.body({
+		"lines": [
+                        {
+                            "id": 1,
+                            "name": "ginza",
+                            "name_kana": "ginza",
+                            "mark": "G",
+                            "color_code": "f39700",
+                            "sort_number": 0
+                        },
+                        {
+                            "id": 2,
+                            "name": "marunouchi",
+                            "name_kana": "marunouchi",
+                            "mark": "M",
+                            "color_code": "e60012",
+                            "sort_number": 0
+                        }
+                    ]
+    	})
 	.toPact()
 val config = MockProviderConfig.createDefault()
 val result = runConsumerTest(pact, config, object : PactTestRun {
