@@ -19,12 +19,6 @@
 ---
 
 
-### 要するに
-
-これをこう
-
----
-
 ### Consumerテストコード
 ```
 val pact = ConsumerPactBuilder.consumer("AndroidApp")
@@ -67,9 +61,11 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
 @[2](対象のProviderを指定)
 @[3-4](エンドポイントとHttpメソッドを指定)
 @[5-27](期待するレスポンスを指定)
-@[２9-35](テストを実行)
+@[29-35](テストを実行)
 
 ---
+
+### Pactファイル
 
 ```
 {
@@ -136,6 +132,9 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
     }
 }
 ```
+@[2-6](ConsumerとProviderの名前)
+@[10-13](エンドポイントとHttpメソッド)
+@[14-36](期待するレスポンス)
 
 ---
 
