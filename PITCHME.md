@@ -23,37 +23,37 @@
 ```
 val pact = ConsumerPactBuilder.consumer("AndroidApp")
 	.hasPactWith("ToiletAPI")
-        .path("/lines")
-        .method("GET")
-        .willRespondWith()
-        .status(200)
-        .body("{\n" +
-                "  \"lines\": [\n" +
-                "    {\n" +
-                "      \"id\": 1,\n" +
-                "      \"name\": \"ginza\",\n" +
-                "      \"name_kana\": \"ginza\",\n" +
-                "      \"mark\": \"G\",\n" +
-                "      \"color_code\": \"f39700\",\n" +
-                "      \"sort_number\": 0\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"id\": 2,\n" +
-                "      \"name\": \"marunouchi\",\n" +
-                "      \"name_kana\": \"marunouchi\",\n" +
-                "      \"mark\": \"M\",\n" +
-                "      \"color_code\": \"e60012\",\n" +
-                "      \"sort_number\": 0\n" +
-                "    }" +
-                "  ]\n" +
-                "}"
-        )
-        .toPact()
+	.path("/lines")
+	.method("GET")
+	.willRespondWith()
+	.status(200)
+	.body("{\n" +
+		"  \"lines\": [\n" +
+		"    {\n" +
+		"      \"id\": 1,\n" +
+		"      \"name\": \"ginza\",\n" +
+		"      \"name_kana\": \"ginza\",\n" +
+		"      \"mark\": \"G\",\n" +
+		"      \"color_code\": \"f39700\",\n" +
+		"      \"sort_number\": 0\n" +
+		"    },\n" +
+		"    {\n" +
+		"      \"id\": 2,\n" +
+		"      \"name\": \"marunouchi\",\n" +
+		"      \"name_kana\": \"marunouchi\",\n" +
+		"      \"mark\": \"M\",\n" +
+		"      \"color_code\": \"e60012\",\n" +
+		"      \"sort_number\": 0\n" +
+		"    }" +
+		"  ]\n" +
+		"}"
+	)
+	.toPact()
 val config = MockProviderConfig.createDefault()
 val result = runConsumerTest(pact, config, object : PactTestRun {
     override fun run(mockServer: MockServer) {
 	// ここにassertThatとか
-    }
+    }
 })
 Assert.assertEquals(PactVerificationResult.Ok, result);
 ```
