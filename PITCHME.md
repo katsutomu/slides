@@ -22,7 +22,7 @@
 ### Consumerテストコード
 ```
 val pact = ConsumerPactBuilder.consumer("AndroidApp")
-        .hasPactWith("ToiletAPI")
+	.hasPactWith("ToiletAPI")
         .path("/lines")
         .method("GET")
         .willRespondWith()
