@@ -45,7 +45,7 @@ val pact = ConsumerPactBuilder.consumer("AndroidApp")
                             "color_code": "e60012",
                             "sort_number": 0
                         }
-                    ]
+        	]
     	})
 	.toPact()
 val config = MockProviderConfig.createDefault()
