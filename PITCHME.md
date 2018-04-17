@@ -250,3 +250,10 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
 
 ![thanks](https://3.bp.blogspot.com/-aAyr3nkPJjM/V4SA-MMnpZI/AAAAAAAA8PI/qIYC7KscDR4m-NNjCii6Ovko1ltHgZPwgCLcB/s800/job_ojigi_koumuin.png
 )
+
+### 資料など
+- http://techlife.cookpad.com/entry/2016/06/28/164247
+- http://blog.soushi.me/entry/2017/01/28/215229
+- https://github.com/pact-foundation/pact-go
+- https://github.com/DiUS/pact-jvm
+- https://github.com/DiUS/pact_broker-docker
