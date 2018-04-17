@@ -105,21 +105,6 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
                     ]
                 }
             }
-        },
-        {
-            "description": "test stopStations",
-            "request": {
-                "method": "GET",
-                "path": "/lines/1/stop_stations"
-            },
-            "response": {
-                "status": 200,
-                "body": {
-                    "stop_stations": [
-                        
-                    ]
-                }
-            }
         }
     ],
     "metadata": {
@@ -132,25 +117,22 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
     }
 }
 ```
-@[2-6](ConsumerとProviderの名前)
-@[10-13](エンドポイントとHttpメソッド)
-@[14-36](期待するレスポンス)
+@[2-7](ConsumerとProviderの名前)
+@[11-14](エンドポイントとHttpメソッド)
+@[15-37](期待するレスポンス)
 
 ---
 
 ### Providerテストコード
 ```
-	// Create Pact connecting to local Daemon
 	pact := &dsl.Pact{
 		Port:     6666, // Ensure this port matches the daemon port!
 		Consumer: "AndroidApp",
 		Provider: "ToiletAPI",
 	}
 
-	// Start provider API in the background
 	go startServer()
 
-	// Verify the Provider with local Pact Files
 	pact.VerifyProvider(t, types.VerifyRequest{
 		ProviderBaseURL:        "http://localhost:8080",
 		BrokerURL:              "http://localhost",
@@ -162,9 +144,10 @@ Assert.assertEquals(PactVerificationResult.Ok, result);
 	})
 
 ```
-@[](サーバーを起動して)
-@[11-17](pact deamonを介するしてテスト)
-@[14](ここでConsumerが期待する内容が書かれたファイルを指定している)
+@[1-5](Pact　deamonに接続)
+@[7](APIを起動)
+@[9-17](テストを実行)
+@[12](/setUpにリクエストがきてデータを入れ替える)
 
 ---
 
