@@ -202,6 +202,9 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
 ```
 
 ---
+![fail_text](assets/fail_text.png)
+
+---
 
 ### fixture
 ```
@@ -229,4 +232,7 @@ rest.Post("/setup", func(w rest.ResponseWriter, r *rest.Request) {
 3. その他にもお得機能あり
 
 
+![success](assets/success.png)
+![network_graph](assets/network_graph.png)
+![fail](assets/fail.png)
 
